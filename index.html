@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Leave Application</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Anton&family=Archivo+Black&family=Arima:wght@100..700&family=Baloo+Tammudu+2:wght@400..800&family=Bruno+Ace+SC&family=Denk+One&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Jockey+One&family=Lobster&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Paytone+One&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Racing+Sans+One&family=Rajdhani:wght@300;400;500;600;700&family=Rufina:wght@400;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Satisfy&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .banner {
+    background-color: #3b145b;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner h1 {
+    font-size: 36px;
+    color: white;
+    font-weight: 600;
+}
+.banner p {
+    font-weight: 100;
+    font-size: 18px;
+    margin-top: 10px;
+}
+        .leave-container {
+            width: 1000px;
+            height: auto;
+            padding: 30px;
+            margin: auto;
+            height: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; 
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+             position: relative;
+            background: linear-gradient(135deg, #79b0bc83, #aa89e489); 
+            animation: gradientMotion 10s ease infinite;
+        }
+
+        .leave-container h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #000000;
+            font-family: "Anta", serif;
+        }
+
+        .form-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+        max-width: 800px; 
+        margin: auto; 
+    }
+
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            height: 50px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+        }
+
+        .form-group select,
+        .form-group input[type="date"] {
+            height: 50px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: none;
+        }
+
+
+        .submit-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .form-row {
+        display: flex;
+        gap: 20px;
+    }
+    .form-group {
+        flex: 1;
+    }
+    .form-group.full-width {
+        flex-basis: 100%;
+    }
+
+        .btn,
+            .btn *,
+            .btn :after,
+            .btn :before,
+            .btn:after,
+            .btn:before {
+            border: 0 solid;
+            box-sizing: border-box;
+            }
+
+            .btn {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: button;
+            background-color: #000000;
+            background-image: none;
+            color: #fff;
+            cursor: pointer;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+                Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            font-size: 100%;
+            font-weight: 900;
+            line-height: 1.5;
+            margin: 0;
+            
+            -webkit-mask: -webkit-radial-gradient(#000, #fff);
+            padding: 0;
+            text-transform: uppercase;
+            }
+
+            .btn:disabled {
+            cursor: default;
+            }
+
+            .btn:-moz-focusring {
+            outline: auto;
+            }
+
+            .btn svg {
+            display: block;
+            }
+
+            .btn [hidden] {
+            display: none;
+            }
+
+            .btn {
+            border-radius: 99rem;
+            border-width: 2px;
+            overflow: hidden;
+            padding: 0.8rem 3rem;
+            position: relative;
+            }
+
+            .btn span {
+            mix-blend-mode: difference;
+            }
+
+            .btn:after,
+            .btn:before {
+            background: linear-gradient(
+                90deg,
+                #fff 25%,
+                transparent 0,
+                transparent 50%,
+                #fff 0,
+                #fff 75%,
+                transparent 0
+            );
+            content: "";
+            inset: 0;
+            position: absolute;
+            transform: translateY(var(--progress, 100%));
+            transition: transform 0.2s ease;
+            }
+
+            .btn:after {
+            --progress: -100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0,
+                transparent 25%,
+                #fff 0,
+                #fff 50%,
+                transparent 0,
+                transparent 75%,
+                #fff 0
+            );
+            z-index: -1;
+            }
+
+            .btn:hover:after,
+            .btn:hover:before {
+            --progress: 0;
+            }
+            @media screen and (max-width: 1024px) {
+    .leave-container {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .leave-container h2 {
+        font-size: 28px;
+    }
+
+    .leave-form {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .submit-container {
+        grid-column: span 1;
+    }
+
+    .btn {
+        padding: 0.6rem 2rem;
+        font-size: 16px;
+    }
+}
+
+/* Tablet View */
+@media screen and (max-width: 768px) {
+    .banner h1 {
+        font-size: 28px;
+    }
+
+    .banner p {
+        font-size: 16px;
+    }
+
+    .leave-container {
+        width: 95%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .leave-container h2 {
+        font-size: 26px;
+    }
+
+    .leave-form {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 0.6rem 1.8rem;
+        font-size: 14px;
+    }
+}
+
+/* Mobile View */
+/* Mobile View Fix */
+@media screen and (max-width: 450px) {
+    body {
+        padding: 10px;
+    }
+
+    .banner {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .banner h1 {
+        font-size: 20px;
+    }
+
+    .banner p {
+        font-size: 12px;
+    }
+
+    .leave-container {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .leave-container h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    /* Make sure each input is on its own row */
+    .leave-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    /* Ensure proper spacing for form fields */
+    .form-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 14px;
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+
+    .form-group textarea {
+        height: 100px;
+        resize: none;
+    }
+
+    /* Full width for "Reason" input */
+    .form-group.full-width {
+        width: 100%;
+    }
+
+    /* Center submit button */
+    .submit-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 8px;
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body> <div class="banner">
+    <h1>Employee Leave Form</h1>
+    <p>Apply for leave here</p>
+</div>
+
+<div class="leave-container">
+    <form class="leave-form" id="leave-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Employee Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required minlength="3" maxlength="50"
+                    pattern="^[A-Za-z]+(?:\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\.[A-Za-z]+){0,3}$"
+                    title="Username cannot start with a space, no consecutive spaces allowed, maximum 8 spaces and 3 periods allowed.">
+            </div>
+            <div class="form-group">
+                <label for="emp-id">Employee ID:</label>
+                <input type="text" id="emp-id" name="emp-id" placeholder="Enter your Employee ID" required minlength="7" maxlength="7"
+                    pattern="^[A-Z]{3}(?!0000)[0-9]{4}$"
+                    title="Employee ID should be in the format: 3 uppercase letters followed by 4 digits, starting from 0001 (cannot be 0000)">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Employee Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email ID" required minlength="8" maxlength="50"
+                    title="Please enter a valid email address">
+            </div>
+            <div class="form-group">
+                <label for="leave-type">Leave Type:</label>
+                <select id="leave-type" name="leave-type" required>
+                    <option value="sick">Sick Leave</option>
+                    <option value="casual">Casual Leave</option>
+                    <option value="earned">Earned Leave</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="from-date">From Date:</label>
+                <input type="date" id="from-date" name="from-date" required>
+            </div>
+            <div class="form-group">
+                <label for="to-date">To Date:</label>
+                <input type="date" id="to-date" name="to-date" required>
+            </div>
+        </div>
+
+        <div id="hour-selection" class="form-row" style="display: none;">
+            <div class="form-group">
+                <label for="from-hour">From Hour:</label>
+                <input type="time" id="from-hour" name="from-hour">
+            </div>
+            <div class="form-group">
+                <label for="to-hour">To Hour:</label>
+                <input type="time" id="to-hour" name="to-hour">
+            </div>
+        </div>
+
+        <div class="form-group full-width">
+            <label for="reason">Reason for Leave:</label>
+            <textarea id="reason" name="reason" placeholder="Enter your reason" required rows="5" minlength="5" maxlength="200"></textarea>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="btn"><span>Submit Leave</span></button>
+        </div>
+    </form>
+</div>
+    
+    <script>
+       document.getElementById('leave-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const empId = document.getElementById('emp-id').value;
+    const email = document.getElementById('email').value;
+    const leaveType = document.getElementById('leave-type').value;
+    const fromDate = document.getElementById('from-date').value;
+    const toDate = document.getElementById('to-date').value;
+    const reason = document.getElementById('reason').value;
+    const fromHour = document.getElementById('from-hour').value;
+    const toHour = document.getElementById('to-hour').value;
+
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    if (fromDate < currentDate) {
+        alert('Please select a valid From Date');
+        return false;
+    }
+
+    if (toDate < fromDate) {
+        alert('Please Select a valid To Date.');
+        return false;
+    }
+
+    if (fromDate === toDate && fromHour && toHour) {
+        if (fromHour > toHour) {
+            alert('The "To Hour" cannot be earlier than the "From Hour".');
+            return false;
+        }
+
+        
+        const [fromHourVal, fromMinuteVal] = fromHour.split(':').map(Number);
+        const [toHourVal, toMinuteVal] = toHour.split(':').map(Number);
+
+        const fromTotalMinutes = fromHourVal * 60 + fromMinuteVal;
+        const toTotalMinutes = toHourVal * 60 + toMinuteVal;
+
+        const timeDifference = toTotalMinutes - fromTotalMinutes; 
+
+        if (timeDifference < 30) {
+            alert('The time difference should be at least 30 minutes.');
+            return false;
+        }
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    const leaveDetails = {
+        name,
+        empId,
+        email,
+        leaveType,
+        fromDate,
+        toDate,
+        fromHour,
+        toHour,
+        reason
+    };
+
+    let leaveApplications = JSON.parse(localStorage.getItem('leaveApplications')) || [];
+
+    leaveApplications.push(leaveDetails);
+
+    localStorage.setItem('leaveApplications', JSON.stringify(leaveApplications));
+
+    alert('Leave application submitted successfully!');
+
+    document.getElementById('leave-form').reset();
+    document.getElementById('hour-selection').style.display = 'none'; 
+});
+
+document.getElementById('from-date').addEventListener('change', function() {
+    toggleHourSelection();
+});
+
+document.getElementById('to-date').addEventListener('change', function() {
+    toggleHourSelection();
+});
+
+document.getElementById('from-hour').addEventListener('change', function() {
+    validateHours();
+});
+
+document.getElementById('to-hour').addEventListener('change', function() {
+    validateHours();
+});
+
+function toggleHourSelection() {
+    const fromDate = document.getElementById('from-date').value;
+    const toDate = document.getElementById('to-date').value;
+
+    if (fromDate === toDate) {
+        document.getElementById('hour-selection').style.display = 'block';
+    } else {
+        document.getElementById('hour-selection').style.display = 'none';
+    }
+}
+
+function validateHours() {
+    const fromHour = document.getElementById('from-hour').value;
+    const toHour = document.getElementById('to-hour').value;
+
+    if (fromHour && toHour && fromHour > toHour) {
+        alert('The "To Hour" cannot be earlier than the "From Hour".');
+    }
+
+    if (fromHour && toHour) {
+        const [fromHourVal, fromMinuteVal] = fromHour.split(':').map(Number);
+        const [toHourVal, toMinuteVal] = toHour.split(':').map(Number);
+
+        const fromTotalMinutes = fromHourVal * 60 + fromMinuteVal;
+        const toTotalMinutes = toHourVal * 60 + toMinuteVal;
+
+        const timeDifference = toTotalMinutes - fromTotalMinutes; 
+
+        if (timeDifference < 30) {
+            alert('The time difference should be at least 30 minutes.');
+        }
+    }
+}
+
+    </script>
+    
+    
+    
+</body>
+</html>
